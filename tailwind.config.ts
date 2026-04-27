@@ -24,6 +24,14 @@ export default {
 				heading: ['Montserrat', 'sans-serif'],
 			},
 			colors: {
+				emerald: {
+					corporate: 'hsl(162 60% 22%)',
+					mid: 'hsl(162 52% 32%)',
+					light: 'hsl(162 45% 42%)',
+					pale: 'hsl(160 30% 94%)',
+				},
+			},
+			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

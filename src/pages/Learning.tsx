@@ -27,9 +27,9 @@ export default function Learning() {
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Auto-recommend banner */}
-      <div className="glass border border-primary/30 rounded-xl p-5 bg-primary/5">
+      <div className="bg-white border border-primary/30 rounded-xl p-5 bg-primary/5 shadow-sm">
         <div className="flex items-center gap-3 mb-1">
-          <div className="w-8 h-8 rounded-lg gradient-purple flex items-center justify-center neon-glow-purple">
+          <div className="w-8 h-8 rounded-lg gradient-purple flex items-center justify-center">
             <Icon name="Sparkles" size={15} className="text-white" />
           </div>
           <span className="font-semibold text-foreground">Автоподбор курсов</span>
@@ -45,15 +45,15 @@ export default function Learning() {
         <h3 className="font-heading font-semibold text-foreground mb-4">Рекомендовано для вас</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
           {recommended.map((course) => (
-            <div key={course.id} className="glass border border-border rounded-xl overflow-hidden glass-hover cursor-pointer group">
+            <div key={course.id} className="bg-white border border-border rounded-xl overflow-hidden glass-hover cursor-pointer group shadow-sm">
               <div className={`h-2 ${course.gradient}`} />
               <div className="p-4">
                 <div className="flex items-start justify-between mb-2">
                   <span className="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">{course.category}</span>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    course.tag === "В процессе" ? "bg-cyan-500/20 text-cyan-400"
+                    course.tag === "В процессе" ? "bg-emerald-500/20 text-emerald-600"
                     : course.tag === "Автоподбор" ? "bg-primary/20 text-primary"
-                    : "bg-orange-500/20 text-orange-400"
+                    : "bg-orange-500/20 text-orange-500"
                   }`}>
                     {course.tag}
                   </span>
@@ -65,8 +65,8 @@ export default function Learning() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1 text-xs">
-                    <Icon name="Target" size={11} className="text-green-400" />
-                    <span className="text-green-400 font-medium">{course.match}% совпадение</span>
+                    <Icon name="Target" size={11} className="text-green-600" />
+                    <span className="text-green-600 font-medium">{course.match}% совпадение</span>
                   </div>
                 </div>
                 {course.progress > 0 && (
@@ -111,12 +111,12 @@ export default function Learning() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {filtered.map((course) => (
-            <div key={course.id} className="glass border border-border rounded-xl p-4 glass-hover cursor-pointer group">
+            <div key={course.id} className="bg-white border border-border rounded-xl p-4 glass-hover cursor-pointer group shadow-sm">
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <span className="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">{course.category}</span>
                   {course.completed && (
-                    <span className="ml-2 text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">Пройден</span>
+                    <span className="ml-2 text-xs bg-green-500/20 text-green-600 px-2 py-0.5 rounded-full">Пройден</span>
                   )}
                 </div>
                 <span className="text-xs text-muted-foreground">{course.level}</span>

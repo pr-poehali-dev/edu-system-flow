@@ -11,9 +11,9 @@ const teamMembers = [
 ];
 
 const statusConfig = {
-  excellent: { label: "Отлично", color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
-  good: { label: "Хорошо", color: "text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/20" },
-  behind: { label: "Отстаёт", color: "text-red-400", bg: "bg-red-500/10 border-red-500/20" },
+  excellent: { label: "Отлично", color: "text-green-600", bg: "bg-green-500/10 border-green-500/20" },
+  good: { label: "Хорошо", color: "text-emerald-600", bg: "bg-emerald-500/10 border-emerald-500/20" },
+  behind: { label: "Отстаёт", color: "text-red-500", bg: "bg-red-500/10 border-red-500/20" },
 };
 
 const skillGaps = [
@@ -59,7 +59,7 @@ export default function Reports() {
           { label: "Сертификатов выдано", value: "12", icon: "Award", gradient: "gradient-green", sub: "+3 в этом месяце" },
           { label: "Отстающих", value: `${behind.length}`, icon: "AlertTriangle", gradient: "gradient-orange", sub: "Требуют внимания" },
         ].map((s) => (
-          <div key={s.label} className="stat-card glass border border-border rounded-xl p-5">
+          <div key={s.label} className="stat-card bg-white border border-border rounded-xl p-5 shadow-sm">
             <div className={`w-10 h-10 rounded-xl ${s.gradient} flex items-center justify-center mb-3`}>
               <Icon name={s.icon} size={18} className="text-white" />
             </div>
@@ -72,15 +72,15 @@ export default function Reports() {
 
       {/* Alerts: behind */}
       {behind.length > 0 && (
-        <div className="glass border border-red-500/20 rounded-xl p-5 bg-red-500/5">
+        <div className="bg-white border border-red-500/20 rounded-xl p-5 bg-red-500/5 shadow-sm">
           <div className="flex items-center gap-2 mb-3">
-            <Icon name="AlertTriangle" size={16} className="text-red-400" />
-            <span className="font-semibold text-sm text-red-400">Сотрудники, отстающие от плана</span>
+            <Icon name="AlertTriangle" size={16} className="text-red-500" />
+            <span className="font-semibold text-sm text-red-500">Сотрудники, отстающие от плана</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {behind.map((m) => (
               <div key={m.name} className="flex items-center gap-3 bg-red-500/5 border border-red-500/10 rounded-lg p-3">
-                <div className="w-9 h-9 rounded-full bg-red-500/20 flex items-center justify-center text-sm font-bold text-red-400">
+                <div className="w-9 h-9 rounded-full bg-red-500/20 flex items-center justify-center text-sm font-bold text-red-500">
                   {m.name.split(" ").map((n) => n[0]).join("")}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -88,7 +88,7 @@ export default function Reports() {
                   <p className="text-xs text-muted-foreground">{m.role}</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-bold text-red-400">{m.progress}%</div>
+                  <div className="text-sm font-bold text-red-500">{m.progress}%</div>
                   <div className="text-xs text-muted-foreground">прогресс</div>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function Reports() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Team table */}
-        <div className="lg:col-span-2 glass border border-border rounded-xl overflow-hidden">
+        <div className="lg:col-span-2 bg-white border border-border rounded-xl overflow-hidden shadow-sm">
           <div className="p-5 border-b border-border flex items-center justify-between">
             <h3 className="font-heading font-semibold text-foreground">Статус сотрудников</h3>
             <button className="text-xs flex items-center gap-1.5 text-primary bg-primary/10 hover:bg-primary/20 px-3 py-1.5 rounded-lg transition-colors">
@@ -152,15 +152,15 @@ export default function Reports() {
 
         {/* Skill gaps */}
         <div className="space-y-4">
-          <div className="glass border border-border rounded-xl p-5">
+          <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
             <h4 className="font-semibold text-sm text-foreground mb-4">Дефицит навыков</h4>
             <div className="space-y-3">
               {skillGaps.map((g) => (
-                <div key={g.skill} className="p-3 rounded-lg bg-secondary/50">
+                <div key={g.skill} className="p-3 rounded-lg bg-secondary">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm text-foreground font-medium">{g.skill}</span>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${
-                      g.urgency === "high" ? "bg-red-500/20 text-red-400" : "bg-orange-500/20 text-orange-400"
+                      g.urgency === "high" ? "bg-red-500/20 text-red-500" : "bg-orange-500/20 text-orange-500"
                     }`}>
                       {g.urgency === "high" ? "Срочно" : "Важно"}
                     </span>
@@ -175,7 +175,7 @@ export default function Reports() {
           </div>
 
           {/* Distribution chart */}
-          <div className="glass border border-border rounded-xl p-5">
+          <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
             <h4 className="font-semibold text-sm text-foreground mb-4">Распределение результатов</h4>
             <div className="space-y-2">
               {[

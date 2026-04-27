@@ -11,15 +11,15 @@ const allTasks = [
 ];
 
 const priorityConfig = {
-  high: { label: "Высокий", color: "text-red-400", bg: "bg-red-500/10 border-red-500/20" },
-  medium: { label: "Средний", color: "text-orange-400", bg: "bg-orange-500/10 border-orange-500/20" },
-  low: { label: "Низкий", color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
+  high: { label: "Высокий", color: "text-red-500", bg: "bg-red-500/10 border-red-500/20" },
+  medium: { label: "Средний", color: "text-orange-500", bg: "bg-orange-500/10 border-orange-500/20" },
+  low: { label: "Низкий", color: "text-green-600", bg: "bg-green-500/10 border-green-500/20" },
 };
 
 const statusConfig = {
   pending: { label: "Не начато", color: "text-muted-foreground", icon: "Circle" },
-  in_progress: { label: "В процессе", color: "text-blue-400", icon: "Clock" },
-  completed: { label: "Завершено", color: "text-green-400", icon: "CheckCircle" },
+  in_progress: { label: "В процессе", color: "text-blue-500", icon: "Clock" },
+  completed: { label: "Завершено", color: "text-green-600", icon: "CheckCircle" },
 };
 
 export default function Tasks() {
@@ -47,7 +47,7 @@ export default function Tasks() {
           <button
             key={s.key}
             onClick={() => setFilter(s.key)}
-            className={`stat-card glass border rounded-xl p-4 text-left transition-all glass-hover ${
+            className={`stat-card bg-white border rounded-xl p-4 text-left transition-all glass-hover shadow-sm ${
               filter === s.key ? "border-primary/50 bg-primary/5" : "border-border"
             }`}
           >
@@ -61,24 +61,24 @@ export default function Tasks() {
       </div>
 
       {/* Urgent */}
-      <div className="glass border border-orange-500/20 rounded-xl p-4 bg-orange-500/5">
+      <div className="bg-white border border-orange-500/20 rounded-xl p-4 bg-orange-500/5 shadow-sm">
         <div className="flex items-center gap-2 mb-3">
-          <Icon name="AlertTriangle" size={16} className="text-orange-400" />
-          <span className="text-sm font-semibold text-orange-400">Срочные дедлайны</span>
+          <Icon name="AlertTriangle" size={16} className="text-orange-500" />
+          <span className="text-sm font-semibold text-orange-500">Срочные дедлайны</span>
         </div>
         <div className="flex gap-3 flex-wrap">
           {allTasks.filter((t) => t.priority === "high" && t.status !== "completed").map((t) => (
             <div key={t.id} className="flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-lg px-3 py-2">
-              <Icon name="Clock" size={13} className="text-orange-400" />
+              <Icon name="Clock" size={13} className="text-orange-500" />
               <span className="text-sm text-foreground">{t.title}</span>
-              <span className="text-xs text-orange-400 ml-1">· {t.deadline}</span>
+              <span className="text-xs text-orange-500 ml-1">· {t.deadline}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Task list */}
-      <div className="glass border border-border rounded-xl overflow-hidden">
+      <div className="bg-white border border-border rounded-xl overflow-hidden shadow-sm">
         <div className="p-5 border-b border-border flex items-center justify-between">
           <h3 className="font-heading font-semibold text-foreground">
             {filter === "all" ? "Все задачи" : statusConfig[filter as keyof typeof statusConfig]?.label ?? "Задачи"}
@@ -126,7 +126,7 @@ export default function Tasks() {
                       </div>
                     )}
                     {task.status === "completed" && (
-                      <div className="mt-2 flex items-center gap-1 text-xs text-green-400">
+                      <div className="mt-2 flex items-center gap-1 text-xs text-green-600">
                         <Icon name="CheckCircle" size={11} />
                         Задача выполнена
                       </div>

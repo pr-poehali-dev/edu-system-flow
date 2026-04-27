@@ -22,31 +22,34 @@ export default function Layout({ currentPage, onNavigate, children }: LayoutProp
   const [notifOpen, setNotifOpen] = useState(false);
 
   const notifications = [
-    { id: 1, type: "deadline", text: "Дедлайн по курсу «React Pro» через 2 дня", time: "10 мин назад", color: "text-orange-400" },
-    { id: 2, type: "test", text: "Результат теста «JavaScript Advanced» — 94%", time: "1 час назад", color: "text-green-400" },
-    { id: 3, type: "task", text: "Новое задание: «Архитектура микросервисов»", time: "3 часа назад", color: "text-purple-400" },
-    { id: 4, type: "cert", text: "Сертификат «Python Basics» готов к загрузке", time: "вчера", color: "text-cyan-400" },
+    { id: 1, text: "Дедлайн по курсу «React Pro» через 2 дня", time: "10 мин назад", color: "text-orange-500" },
+    { id: 2, text: "Результат теста «JavaScript Advanced» — 94%", time: "1 час назад", color: "text-emerald-600" },
+    { id: 3, text: "Новое задание: «Архитектура микросервисов»", time: "3 часа назад", color: "text-primary" },
+    { id: 4, text: "Сертификат «Python Basics» готов к загрузке", time: "вчера", color: "text-emerald-500" },
   ];
 
   return (
     <div className="flex h-screen bg-background overflow-hidden">
-      {/* Sidebar */}
-      <aside className="w-64 flex-shrink-0 flex flex-col border-r border-border" style={{ background: "hsl(var(--sidebar-background))" }}>
+      {/* Sidebar — тёмно-изумрудный */}
+      <aside
+        className="w-64 flex-shrink-0 flex flex-col"
+        style={{ background: "hsl(var(--sidebar-background))" }}
+      >
         {/* Logo */}
-        <div className="p-6 border-b border-border">
+        <div className="p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl gradient-purple flex items-center justify-center neon-glow-purple">
-              <Icon name="Zap" size={18} className="text-white" />
+            <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
+              <Icon name="GraduationCap" size={18} className="text-white" />
             </div>
             <div>
-              <div className="font-heading font-bold text-sm text-foreground">LearnOS</div>
-              <div className="text-xs text-muted-foreground">Платформа обучения</div>
+              <div className="font-heading font-bold text-sm text-white">LearnOS</div>
+              <div className="text-xs text-white/50">Платформа обучения</div>
             </div>
           </div>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 p-3 space-y-1 overflow-y-auto scrollbar-hide">
+        <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto scrollbar-hide">
           {navItems.map((item) => {
             const isActive = currentPage === item.id;
             return (
@@ -55,14 +58,14 @@ export default function Layout({ currentPage, onNavigate, children }: LayoutProp
                 onClick={() => onNavigate(item.id)}
                 className={`nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? "active bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    ? "active bg-white/15 text-white"
+                    : "text-white/60 hover:text-white hover:bg-white/8"
                 }`}
               >
-                <Icon name={item.icon} size={18} />
+                <Icon name={item.icon} size={17} />
                 {item.label}
                 {item.id === "tasks" && (
-                  <span className="ml-auto text-xs bg-orange-500/20 text-orange-400 px-1.5 py-0.5 rounded-full">3</span>
+                  <span className="ml-auto text-xs bg-orange-500 text-white px-1.5 py-0.5 rounded-full font-semibold">3</span>
                 )}
               </button>
             );
@@ -70,15 +73,15 @@ export default function Layout({ currentPage, onNavigate, children }: LayoutProp
         </nav>
 
         {/* User */}
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full gradient-cyan flex items-center justify-center text-sm font-bold text-background">АК</div>
+            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">АК</div>
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium text-foreground truncate">Алексей Козлов</div>
-              <div className="text-xs text-muted-foreground">Разработчик</div>
+              <div className="text-sm font-medium text-white truncate">Алексей Козлов</div>
+              <div className="text-xs text-white/50">Разработчик</div>
             </div>
-            <button className="text-muted-foreground hover:text-foreground transition-colors">
-              <Icon name="Settings" size={16} />
+            <button className="text-white/40 hover:text-white transition-colors">
+              <Icon name="Settings" size={15} />
             </button>
           </div>
         </div>
@@ -87,9 +90,9 @@ export default function Layout({ currentPage, onNavigate, children }: LayoutProp
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="h-16 flex items-center justify-between px-6 border-b border-border glass flex-shrink-0">
+        <header className="h-16 flex items-center justify-between px-6 border-b border-border bg-white flex-shrink-0 shadow-sm">
           <div>
-            <h1 className="font-heading font-semibold text-foreground text-lg">
+            <h1 className="font-heading font-semibold text-foreground text-base">
               {navItems.find((n) => n.id === currentPage)?.label}
             </h1>
             <p className="text-xs text-muted-foreground">Понедельник, 27 апреля 2026</p>
@@ -97,9 +100,9 @@ export default function Layout({ currentPage, onNavigate, children }: LayoutProp
           <div className="flex items-center gap-3">
             {/* Search */}
             <div className="relative hidden md:flex items-center">
-              <Icon name="Search" size={15} className="absolute left-3 text-muted-foreground" />
+              <Icon name="Search" size={14} className="absolute left-3 text-muted-foreground" />
               <input
-                className="bg-secondary border border-border rounded-lg pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary w-52 transition-all focus:w-64"
+                className="bg-secondary border border-border rounded-lg pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary w-52 transition-all focus:w-64"
                 placeholder="Поиск..."
               />
             </div>
@@ -115,21 +118,21 @@ export default function Layout({ currentPage, onNavigate, children }: LayoutProp
               </button>
 
               {notifOpen && (
-                <div className="absolute right-0 top-12 w-80 glass border border-border rounded-xl shadow-2xl z-50 animate-fade-in">
+                <div className="absolute right-0 top-12 w-80 bg-white border border-border rounded-xl shadow-xl z-50 animate-fade-in">
                   <div className="p-4 border-b border-border flex items-center justify-between">
                     <span className="font-semibold text-sm text-foreground">Уведомления</span>
-                    <span className="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-full">4 новых</span>
+                    <span className="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-full font-medium">4 новых</span>
                   </div>
                   <div className="divide-y divide-border max-h-72 overflow-y-auto scrollbar-hide">
                     {notifications.map((n) => (
-                      <div key={n.id} className="p-4 hover:bg-secondary/50 transition-colors cursor-pointer">
+                      <div key={n.id} className="p-4 hover:bg-secondary transition-colors cursor-pointer">
                         <p className="text-sm text-foreground leading-snug">{n.text}</p>
-                        <p className={`text-xs mt-1 ${n.color}`}>{n.time}</p>
+                        <p className={`text-xs mt-1 font-medium ${n.color}`}>{n.time}</p>
                       </div>
                     ))}
                   </div>
                   <div className="p-3 border-t border-border">
-                    <button className="w-full text-xs text-primary hover:text-primary/80 transition-colors">
+                    <button className="w-full text-xs text-primary hover:text-primary/80 transition-colors font-medium">
                       Показать все уведомления
                     </button>
                   </div>

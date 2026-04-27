@@ -23,11 +23,11 @@ const maxXp = 500;
 
 const achievements = [
   { title: "Быстрый старт", desc: "Завершил первый курс", icon: "Zap", color: "text-yellow-400 bg-yellow-400/10", earned: true },
-  { title: "Отличник", desc: "Тест на 95%+", icon: "Star", color: "text-purple-400 bg-purple-400/10", earned: true },
-  { title: "Серийный", desc: "7 дней подряд", icon: "Flame", color: "text-orange-400 bg-orange-400/10", earned: true },
-  { title: "Мастер курсов", desc: "10 курсов завершено", icon: "Award", color: "text-cyan-400 bg-cyan-400/10", earned: true },
+  { title: "Отличник", desc: "Тест на 95%+", icon: "Star", color: "text-primary bg-primary/10", earned: true },
+  { title: "Серийный", desc: "7 дней подряд", icon: "Flame", color: "text-orange-500 bg-orange-500/10", earned: true },
+  { title: "Мастер курсов", desc: "10 курсов завершено", icon: "Award", color: "text-emerald-600 bg-emerald-500/10", earned: true },
   { title: "Топ-1%", desc: "Лучший результат команды", icon: "Trophy", color: "text-yellow-400 bg-yellow-400/10", earned: false },
-  { title: "Полиглот", desc: "5 технологий изучены", icon: "Globe", color: "text-green-400 bg-green-400/10", earned: false },
+  { title: "Полиглот", desc: "5 технологий изучены", icon: "Globe", color: "text-green-600 bg-green-500/10", earned: false },
 ];
 
 export default function Progress() {
@@ -41,7 +41,7 @@ export default function Progress() {
           { label: "Активных дней", value: "18", icon: "Flame", gradient: "gradient-orange", sub: "Серия: 12 дней" },
           { label: "XP этот месяц", value: "410", icon: "Star", gradient: "gradient-green", sub: "Рекорд: 520 XP" },
         ].map((s) => (
-          <div key={s.label} className="stat-card glass border border-border rounded-xl p-5">
+          <div key={s.label} className="stat-card bg-white border border-border rounded-xl p-5 shadow-sm">
             <div className={`w-10 h-10 rounded-xl ${s.gradient} flex items-center justify-center mb-3`}>
               <Icon name={s.icon} size={18} className="text-white" />
             </div>
@@ -54,7 +54,7 @@ export default function Progress() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Skills */}
-        <div className="lg:col-span-2 glass border border-border rounded-xl p-5">
+        <div className="lg:col-span-2 bg-white border border-border rounded-xl p-5 shadow-sm">
           <div className="flex items-center justify-between mb-5">
             <h3 className="font-heading font-semibold text-foreground">Детальная аналитика навыков</h3>
             <span className="text-xs text-muted-foreground">vs. прошлый квартал</span>
@@ -68,7 +68,7 @@ export default function Progress() {
                     <span className="text-xs text-muted-foreground bg-secondary px-1.5 py-0.5 rounded-full">{skill.category}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-green-400 font-medium">{skill.trend}</span>
+                    <span className="text-xs text-green-600 font-medium">{skill.trend}</span>
                     <span className="text-sm font-bold text-foreground">{skill.level}%</span>
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export default function Progress() {
         {/* XP chart + Achievements */}
         <div className="space-y-4">
           {/* XP chart */}
-          <div className="glass border border-border rounded-xl p-5">
+          <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
             <h4 className="font-semibold text-sm text-foreground mb-4">XP по месяцам</h4>
             <div className="flex items-end gap-2 h-32">
               {monthlyData.map((d) => (
@@ -101,7 +101,7 @@ export default function Progress() {
           </div>
 
           {/* Achievements */}
-          <div className="glass border border-border rounded-xl p-5">
+          <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
             <h4 className="font-semibold text-sm text-foreground mb-4">Достижения</h4>
             <div className="grid grid-cols-2 gap-2">
               {achievements.map((ach) => (
@@ -124,7 +124,7 @@ export default function Progress() {
       </div>
 
       {/* Learning curve */}
-      <div className="glass border border-border rounded-xl p-5">
+      <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
         <h3 className="font-heading font-semibold text-foreground mb-4">Динамика обучения по неделям</h3>
         <div className="flex items-end gap-1 h-24">
           {[30, 45, 20, 60, 80, 40, 75, 90, 55, 70, 85, 95, 60, 40, 80, 100, 65, 75, 85, 90, 70, 55, 88, 72, 95, 85, 78].map((v, i) => (

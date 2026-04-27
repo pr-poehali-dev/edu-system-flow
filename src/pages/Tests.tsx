@@ -71,7 +71,7 @@ export default function Tests() {
     if (finished) {
       return (
         <div className="flex items-center justify-center min-h-[60vh] animate-fade-in">
-          <div className="glass border border-border rounded-2xl p-8 max-w-md w-full text-center">
+          <div className="bg-white border border-border rounded-2xl p-8 max-w-md w-full text-center shadow-sm">
             <div className={`w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-heading font-bold text-white ${score >= 80 ? "gradient-green" : score >= 60 ? "gradient-orange" : "bg-red-500/80"}`}>
               {score}%
             </div>
@@ -82,7 +82,7 @@ export default function Tests() {
               {test.title} — {sampleQuestions.filter((q, i) => answers[i] === q.correct).length} из {sampleQuestions.length} правильно
             </p>
             {score >= 80 && (
-              <div className="mt-3 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-sm text-green-400 flex items-center gap-2 justify-center">
+              <div className="mt-3 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-sm text-green-600 flex items-center gap-2 justify-center">
                 <Icon name="Award" size={16} />
                 Сертификат будет выдан автоматически
               </div>
@@ -118,7 +118,7 @@ export default function Tests() {
           </div>
         </div>
 
-        <div className="glass border border-border rounded-2xl p-6">
+        <div className="bg-white border border-border rounded-2xl p-6 shadow-sm">
           <h3 className="font-heading font-semibold text-foreground text-lg mb-6">{q.text}</h3>
           <div className="space-y-3">
             {q.options.map((opt, i) => (
@@ -162,7 +162,7 @@ export default function Tests() {
           { label: "Лучший результат", value: "96%", icon: "Trophy", gradient: "gradient-purple" },
           { label: "Ожидают прохождения", value: "2", icon: "Clock", gradient: "gradient-orange" },
         ].map((s) => (
-          <div key={s.label} className="stat-card glass border border-border rounded-xl p-4">
+          <div key={s.label} className="stat-card bg-white border border-border rounded-xl p-4 shadow-sm">
             <div className={`w-9 h-9 rounded-lg ${s.gradient} flex items-center justify-center mb-3`}>
               <Icon name={s.icon} size={16} className="text-white" />
             </div>
@@ -173,7 +173,7 @@ export default function Tests() {
       </div>
 
       {/* Tests list */}
-      <div className="glass border border-border rounded-xl overflow-hidden">
+      <div className="bg-white border border-border rounded-xl overflow-hidden shadow-sm">
         <div className="p-5 border-b border-border">
           <h3 className="font-heading font-semibold text-foreground">Доступные тесты</h3>
         </div>
@@ -189,7 +189,7 @@ export default function Tests() {
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-foreground">{test.title}</p>
                   {test.status === "passed" && (
-                    <span className="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">Сдан</span>
+                    <span className="text-xs bg-green-500/20 text-green-600 px-2 py-0.5 rounded-full">Сдан</span>
                   )}
                 </div>
                 <p className="text-xs text-muted-foreground mt-0.5">{test.course}</p>
@@ -197,13 +197,13 @@ export default function Tests() {
                   <span className="flex items-center gap-1"><Icon name="HelpCircle" size={11} />{test.questions} вопросов</span>
                   <span className="flex items-center gap-1"><Icon name="Clock" size={11} />{test.duration}</span>
                   {test.status === "pending" && (
-                    <span className="flex items-center gap-1 text-orange-400"><Icon name="Calendar" size={11} />до {test.deadline}</span>
+                    <span className="flex items-center gap-1 text-orange-500"><Icon name="Calendar" size={11} />до {test.deadline}</span>
                   )}
                 </div>
               </div>
               <div className="text-right flex-shrink-0">
                 {test.status === "passed" && test.score && (
-                  <div className={`text-lg font-heading font-bold mb-1 ${test.score >= 90 ? "neon-text-cyan" : "text-foreground"}`}>
+                  <div className={`text-lg font-heading font-bold mb-1 ${test.score >= 90 ? "text-primary" : "text-foreground"}`}>
                     {test.score}%
                   </div>
                 )}

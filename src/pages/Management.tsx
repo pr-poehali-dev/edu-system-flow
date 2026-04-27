@@ -39,7 +39,7 @@ export default function Management() {
           { label: "Ср. прогресс", value: "67%", icon: "TrendingUp", gradient: "gradient-green" },
           { label: "Назначено курсов", value: "18", icon: "ClipboardList", gradient: "gradient-orange" },
         ].map((s) => (
-          <div key={s.label} className="stat-card glass border border-border rounded-xl p-4">
+          <div key={s.label} className="stat-card bg-white border border-border rounded-xl p-4 shadow-sm">
             <div className={`w-9 h-9 rounded-lg ${s.gradient} flex items-center justify-center mb-3`}>
               <Icon name={s.icon} size={16} className="text-white" />
             </div>
@@ -51,7 +51,7 @@ export default function Management() {
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Team */}
-        <div className="xl:col-span-2 glass border border-border rounded-xl overflow-hidden">
+        <div className="xl:col-span-2 bg-white border border-border rounded-xl overflow-hidden shadow-sm">
           <div className="p-5 border-b border-border flex items-center justify-between flex-wrap gap-3">
             <div className="flex items-center gap-3 flex-wrap">
               <h3 className="font-heading font-semibold text-foreground">Команда</h3>
@@ -69,7 +69,7 @@ export default function Management() {
             </div>
             <div className="flex gap-2">
               {selected.length > 0 && (
-                <button className="text-xs flex items-center gap-1.5 text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 px-3 py-1.5 rounded-lg transition-colors">
+                <button className="text-xs flex items-center gap-1.5 text-orange-500 bg-orange-500/10 hover:bg-orange-500/20 px-3 py-1.5 rounded-lg transition-colors">
                   <Icon name="BookOpen" size={12} />
                   Назначить курс ({selected.length})
                 </button>
@@ -124,7 +124,7 @@ export default function Management() {
 
         {/* Learning tracks */}
         <div className="space-y-4">
-          <div className="glass border border-border rounded-xl p-5">
+          <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-semibold text-sm text-foreground">Треки обучения</h4>
               <button className="text-xs text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
@@ -134,7 +134,7 @@ export default function Management() {
             </div>
             <div className="space-y-3">
               {trackTemplates.map((track) => (
-                <div key={track.title} className="p-3 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors cursor-pointer group">
+                <div key={track.title} className="p-3 rounded-xl bg-secondary hover:bg-secondary/80 transition-colors cursor-pointer group">
                   <div className="flex items-start gap-3">
                     <div className={`w-9 h-9 rounded-lg ${track.color} flex items-center justify-center flex-shrink-0`}>
                       <Icon name={track.icon} size={15} className="text-white" />
@@ -156,14 +156,14 @@ export default function Management() {
           </div>
 
           {/* Quick actions */}
-          <div className="glass border border-border rounded-xl p-5">
+          <div className="bg-white border border-border rounded-xl p-5 shadow-sm">
             <h4 className="font-semibold text-sm text-foreground mb-3">Быстрые действия</h4>
             <div className="space-y-2">
               {[
-                { icon: "Send", label: "Отправить уведомление", color: "text-purple-400" },
-                { icon: "FileText", label: "Выгрузить отчёт", color: "text-cyan-400" },
+                { icon: "Send", label: "Отправить уведомление", color: "text-primary" },
+                { icon: "FileText", label: "Выгрузить отчёт", color: "text-emerald-600" },
                 { icon: "Award", label: "Выдать сертификат", color: "text-yellow-400" },
-                { icon: "BarChart2", label: "Аналитика по отделу", color: "text-green-400" },
+                { icon: "BarChart2", label: "Аналитика по отделу", color: "text-green-600" },
               ].map((a) => (
                 <button key={a.label} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors text-left">
                   <Icon name={a.icon} size={16} className={a.color} />
